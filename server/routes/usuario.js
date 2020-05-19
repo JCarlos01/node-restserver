@@ -8,18 +8,16 @@ const { verificaToken, verificaAdmin_Role } = require('../middlewares/autenticac
 
 const app = express();
 
+//=====================================
+// SOLICITAR LISTA DE USUARIOS PAGINADA
+//=====================================
 app.get('/usuario', verificaToken, (req, res) => {
-
-
-
-
 
     let desde = req.query.desde || 0;
     desde = Number(desde);
 
     let limite = req.query.limite || 5;
     limite = Number(limite);
-
 
     Usuario.find({ estado: true }, 'nombre email role estado google img')
         .skip(desde)
@@ -40,14 +38,14 @@ app.get('/usuario', verificaToken, (req, res) => {
                     usuarios,
                     cuantos: conteo
                 });
-
             })
-
-
         })
-
 });
 
+
+//=================================
+// CREAR NUEVO USUARIO
+//=================================
 app.post('/usuario', [verificaToken, verificaAdmin_Role], function(req, res) {
 
     let body = req.body;
@@ -76,6 +74,9 @@ app.post('/usuario', [verificaToken, verificaAdmin_Role], function(req, res) {
     })
 });
 
+//=================================
+// ACTUALIZAR INFORMACION DE USUARIO
+//=================================
 app.put('/usuario/:id', [verificaToken, verificaAdmin_Role], function(req, res) {
 
     let id = req.params.id;
@@ -96,6 +97,10 @@ app.put('/usuario/:id', [verificaToken, verificaAdmin_Role], function(req, res) 
     })
 });
 
+
+//==================================================
+// BORRAR USUARIO (CAMBIAR ESTADO A FALSE UNICAMENTE)
+//==================================================
 app.delete('/usuario/:id', [verificaToken, verificaAdmin_Role], function(req, res) {
 
     let id = req.params.id;
@@ -117,10 +122,7 @@ app.delete('/usuario/:id', [verificaToken, verificaAdmin_Role], function(req, re
             ok: true,
             usuario: usuarioBorrado
         });
-
     });
-
-
 });
 
 module.exports = app;
