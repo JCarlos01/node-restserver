@@ -154,15 +154,4 @@ app.post('/google', async(req, res) => {
 
 });
 
-
-
-
-
-
-
-
-
-
-
-
 module.exports = app;
