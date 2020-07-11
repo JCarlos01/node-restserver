@@ -111,6 +111,35 @@ app.get('/productos/buscar/:termino', verificaToken, (req, res) => {
 
 });
 
+// ===========================
+//  Buscar productos por categoria
+// ===========================
+app.get('/productos/findByCategory/:termino', verificaToken, (req, res) => {
+
+    let termino = req.params.termino;
+
+    Producto.find({ categoria: termino })
+        .populate('categoria', 'nombre')
+        .exec((err, productos) => {
+
+
+            if (err) {
+                return res.status(500).json({
+                    ok: false,
+                    err
+                });
+            }
+
+            res.json({
+                ok: true,
+                productos
+            })
+
+        })
+
+
+});
+
 
 
 
