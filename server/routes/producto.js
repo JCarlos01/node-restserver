@@ -114,14 +114,15 @@ app.get('/productos/buscar/:termino', verificaToken, (req, res) => {
 // ===========================
 //  Buscar productos por categoria
 // ===========================
-app.get('/productos/findByCategory/:termino', verificaToken, (req, res) => {
+app.get('/productos/findByCategory/:categoria', verificaToken, (req, res) => {
 
-    let termino = req.params.termino;
+    let termino = req.params.categoria;
 
-    Producto.find({ categoria: termino })
+    let regex = new RegExp(termino, 'i');
+
+    Producto.find({ nombreCategoria: regex })
         .populate('categoria', 'nombre')
         .exec((err, productos) => {
-
 
             if (err) {
                 return res.status(500).json({
@@ -136,8 +137,6 @@ app.get('/productos/findByCategory/:termino', verificaToken, (req, res) => {
             })
 
         })
-
-
 });
 
 
@@ -160,7 +159,8 @@ app.post('/productos', verificaToken, (req, res) => {
         precioUni: body.precioUni,
         descripcion: body.descripcion,
         disponible: body.disponible,
-        categoria: body.categoria
+        categoria: body.categoria,
+        nombreCategoria: body.nombreCategoria,
     });
 
     producto.save((err, productoDB) => {
