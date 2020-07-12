@@ -13,6 +13,7 @@ app.put('/upload/:tipo/:id', function(req, res) {
     let id = req.params.id;
 
     if (!req.files || Object.keys(req.files).length === 0) {
+
         return res.status(400)
             .json({
                 ok: false,
@@ -20,11 +21,13 @@ app.put('/upload/:tipo/:id', function(req, res) {
                     message: 'No se ha seleccionado ningún archivo'
                 }
             });
+
     }
 
     // Validar tipo
 
     let tiposValidos = ['productos', 'usuarios'];
+
     if (tiposValidos.indexOf(tipo) < 0) {
 
         return res.status(400).json({
@@ -77,6 +80,7 @@ app.put('/upload/:tipo/:id', function(req, res) {
 function imagenUsuario(id, res, nombreArchivo) {
 
     Usuario.findById(id, (err, usuarioDB) => {
+
         if (err) {
             return res.status(500).json({
                 ok: false,
@@ -100,14 +104,13 @@ function imagenUsuario(id, res, nombreArchivo) {
             res.json({
                 ok: true,
                 usuario: usuarioGuardado,
-                img: nombreArchivo
+                img: nombreArchivo,
+                message: 'Imagen subida con exito'
             });
 
         });
 
-
     })
-
 
 }
 

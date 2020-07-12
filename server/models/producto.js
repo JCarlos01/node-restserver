@@ -8,7 +8,8 @@ var productoSchema = new Schema({
     descripcion: { type: String, required: false },
     disponible: { type: Boolean, required: true, default: true },
     nombreCategoria: { type: String, required: true, default: "General" },
-    categoria: { type: Schema.Types.ObjectId, ref: 'Categoria', required: true },
+    urlToImage: { type: String, required: true, default: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Imagen_no_disponible.svg/1200px-Imagen_no_disponible.svg.png" },
+    //categoria: { type: Schema.Types.ObjectId, ref: 'Categoria', required: true },
     usuario: { type: Schema.Types.ObjectId, ref: 'Usuario' }
 });
 

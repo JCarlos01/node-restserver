@@ -9,7 +9,7 @@ let Categoria = require('../models/categoria');
 // ============================
 // Mostrar todas las categorias
 // ============================
-app.get('/categoria', verificaToken, (req, res) => {
+app.get('/categoria', (req, res) => {
 
     Categoria.find({})
         .sort('descripcion')
@@ -71,14 +71,14 @@ app.get('/categoria/:id', verificaToken, (req, res) => {
 // ============================
 // Crear nueva categoria
 // ============================
-app.post('/categoria', verificaToken, (req, res) => {
+app.post('/categoria', (req, res) => {
     // regresa la nueva categoria
     // req.usuario._id
     let body = req.body;
 
     let categoria = new Categoria({
         descripcion: body.descripcion,
-        usuario: req.usuario._id
+        //usuario: req.usuario._id
     });
 
 

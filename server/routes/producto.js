@@ -10,7 +10,7 @@ let Producto = require('../models/producto');
 // ===========================
 //  Obtener productos
 // ===========================
-app.get('/productos', verificaToken, (req, res) => {
+app.get('/productos', (req, res) => {
     // trae todos los productos
     // populate: usuario categoria
     // paginado
@@ -42,7 +42,7 @@ app.get('/productos', verificaToken, (req, res) => {
 
 });
 
-// ===========================
+// ===========================x
 //  Obtener un producto por ID
 // ===========================
 app.get('/productos/:id', (req, res) => {
@@ -116,6 +116,9 @@ app.get('/productos/buscar/:termino', verificaToken, (req, res) => {
 // ===========================
 app.get('/productos/findByCategory/:categoria', verificaToken, (req, res) => {
 
+
+
+
     let termino = req.params.categoria;
 
     let regex = new RegExp(termino, 'i');
@@ -159,7 +162,6 @@ app.post('/productos', verificaToken, (req, res) => {
         precioUni: body.precioUni,
         descripcion: body.descripcion,
         disponible: body.disponible,
-        categoria: body.categoria,
         nombreCategoria: body.nombreCategoria,
     });
 

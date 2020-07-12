@@ -11,7 +11,7 @@ const app = express();
 //=====================================
 // SOLICITAR LISTA DE USUARIOS PAGINADA
 //=====================================
-app.get('/usuario', verificaToken, (req, res) => {
+app.get('/usuario', verificaToken, verificaAdmin_Role, (req, res) => {
 
     let desde = req.query.desde || 0;
     desde = Number(desde);
