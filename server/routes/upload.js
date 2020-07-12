@@ -101,11 +101,16 @@ function imagenUsuario(id, res, nombreArchivo) {
 
         usuarioDB.save((err, usuarioGuardado) => {
 
+            // var d = new Directory("~");
+            // print(d.absolute.path);
+
+            console.log(__dirname);
             res.json({
                 ok: true,
                 usuario: usuarioGuardado,
                 img: nombreArchivo,
-                message: 'Imagen subida con exito'
+                message: 'Imagen subida con exito',
+
             });
 
         });
