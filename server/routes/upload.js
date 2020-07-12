@@ -104,12 +104,12 @@ function imagenUsuario(id, res, nombreArchivo) {
             // var d = new Directory("~");
             // print(d.absolute.path);
 
-            console.log(__dirname);
+            //console.log(__dirname);
             res.json({
                 ok: true,
                 usuario: usuarioGuardado,
                 img: nombreArchivo,
-                message: 'Imagen subida con exito',
+                message: __dirname,
 
             });
 
