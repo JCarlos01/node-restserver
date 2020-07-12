@@ -83,7 +83,7 @@ app.get('/productos/:id', (req, res) => {
 // ===========================
 //  Buscar productos
 // ===========================
-app.get('/productos/buscar/:termino', verificaToken, (req, res) => {
+app.get('/productos/buscar/:termino', (req, res) => {
 
     let termino = req.params.termino;
 
@@ -114,7 +114,7 @@ app.get('/productos/buscar/:termino', verificaToken, (req, res) => {
 // ===========================
 //  Buscar productos por categoria
 // ===========================
-app.get('/productos/findByCategory/:categoria', verificaToken, (req, res) => {
+app.get('/productos/findByCategory/:categoria', (req, res) => {
 
 
 
@@ -241,7 +241,7 @@ app.put('/productos/:id', verificaToken, (req, res) => {
 // ===========================
 //  Borrar un producto
 // ===========================
-app.delete('/productos/:id', verificaToken, (req, res) => {
+app.delete('/productos/:id', (req, res) => {
 
     let id = req.params.id;
 

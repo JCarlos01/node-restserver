@@ -99,12 +99,13 @@ function imagenUsuario(id, res, nombreArchivo) {
 
         usuarioDB.img = nombreArchivo;
 
+
         usuarioDB.save((err, usuarioGuardado) => {
 
             // var d = new Directory("~");
             // print(d.absolute.path);
 
-            //console.log(__dirname);
+            console.log(usuarioDB.img);
             res.json({
                 ok: true,
                 usuario: usuarioGuardado,
