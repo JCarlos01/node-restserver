@@ -163,6 +163,7 @@ app.post('/productos', verificaToken, (req, res) => {
         descripcion: body.descripcion,
         disponible: body.disponible,
         nombreCategoria: body.nombreCategoria,
+        urlToImage: body.urlToImage,
     });
 
     producto.save((err, productoDB) => {
